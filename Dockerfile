@@ -6,4 +6,5 @@ RUN cd /go/src/github.com/jpignata/fargate && env GOOS=linux GOARCH=amd64 CGO_EN
 
 FROM quay.io/realeyes/alpine-node-git:latest
 COPY --from=fargate /usr/local/bin/fargate /usr/local/bin/fargate
+RUN apk update && apk add docker
 CMD ["fargate", "--version"]
